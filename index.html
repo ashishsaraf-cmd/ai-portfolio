@@ -555,7 +555,7 @@ footer a {
         <div class="flow-step"><span class="step-num">4</span> Synthesize into 6-section intelligence profile</div>
         <div class="flow-step"><span class="step-num">5</span> Write structured markdown to Notion Person DB</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Step 1: Resolve partner</span>
@@ -606,7 +606,7 @@ lastReply = emails.<span class="fn">filter</span>(dir == <span class="str">"INCO
         <div class="flow-step"><span class="step-num">5</span> Dispatch 5 Haiku sub-agents with raw data (zero MCP tools)</div>
         <div class="flow-step"><span class="step-num">6</span> Orchestrator writes JSON output → Notion pages</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Architecture: Opus orchestrator + Haiku workers</span>
@@ -662,7 +662,7 @@ queue    = partners.<span class="fn">filter</span>(p <span class="op">=></span> 
         <div class="flow-step"><span class="step-num">4</span> Extract excitement signals + pain points from call transcripts</div>
         <div class="flow-step"><span class="step-num">5</span> Write 6-section ICP to Notion Company DB</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Parallel data collection</span>
@@ -712,7 +712,7 @@ stakeholders = contacts
         <div class="flow-step"><span class="step-num">4</span> Dispatch 5 Haiku agents → receive structured JSON</div>
         <div class="flow-step"><span class="step-num">5</span> Orchestrator writes all Notion pages + logs</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Same pattern as partner batch — different data shape</span>
@@ -751,7 +751,7 @@ done = <span class="fn">readLog</span>(<span class="str">"progress.log"</span>)
         <div class="flow-step"><span class="step-num">5</span> Check last 7 days for active AM threads → recommend threading vs. fresh</div>
         <div class="flow-step"><span class="step-num">6</span> Present drafts for review → create Gmail drafts with signature + CC</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Pull tasks and associated deals</span>
@@ -809,7 +809,7 @@ grouped.<span class="fn">forEach</span>(am <span class="op">=></span> {
         <div class="flow-step"><span class="step-num">4</span> Fetch AM's last engagement: notes, emails, meetings</div>
         <div class="flow-step"><span class="step-num">5</span> Output: Signal + AM status + Social proof + Reachout plan + Draft message</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Find prospect → get mapped AM</span>
@@ -852,7 +852,7 @@ status   = lastContact < <span class="val">30d</span> ? <span class="str">"🔥 
         <div class="flow-step"><span class="step-num">4</span> Create formatted notes on each company's HubSpot record</div>
         <div class="flow-step"><span class="step-num">5</span> Report: ✅ confirmed / ⚠️ unconfirmed / ❌ unmatched</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Pull today's calls</span>
@@ -897,7 +897,7 @@ transcripts.<span class="fn">forEach</span>(t <span class="op">=></span> {
         <div class="flow-step"><span class="step-num">4</span> Read full thread → draft context-aware reply</div>
         <div class="flow-step"><span class="step-num">5</span> Chrome automation: navigate to thread → Reply All → type draft → Ctrl+S</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Scan + deduplicate</span>
@@ -940,7 +940,7 @@ needsReply.<span class="fn">forEach</span>(msg <span class="op">=></span> {
         <div class="flow-step"><span class="step-num">4</span> Batch upload: 10 records per API call</div>
         <div class="flow-step"><span class="step-num">5</span> Report: X created, Y skipped, Z failed</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Read + classify</span>
@@ -979,7 +979,7 @@ mapping = csv.columns.<span class="fn">map</span>(col <span class="op">=></span>
         <div class="flow-step"><span class="step-num">4</span> Batch fetch company details</div>
         <div class="flow-step"><span class="step-num">5</span> Present: N companies with name, domain, industry, location</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Traverse: Contact → Custom Object → Companies</span>
@@ -1019,7 +1019,7 @@ companies = <span class="fn">hubspot.batchRead</span>(companyIds,
         <div class="flow-step"><span class="step-num">4</span> Prioritize: next activity > PSM engaged > AM replied > nurture > cold</div>
         <div class="flow-step"><span class="step-num">5</span> Draft personalized emails using 6 angle types → create Gmail drafts</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// Pull AMs + PSMs</span>
@@ -1064,7 +1064,7 @@ ams.<span class="fn">sorted</span>().<span class="fn">forEach</span>(am <span cl
         <div class="flow-step"><span class="step-num">2</span> Sort by due date → filter for today</div>
         <div class="flow-step"><span class="step-num">3</span> Report tasks + suggest automation opportunities</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 tasks = <span class="fn">notion.queryDB</span>(taskDbId, {
@@ -1093,7 +1093,7 @@ tasks = <span class="fn">notion.queryDB</span>(taskDbId, {
         <div class="flow-step"><span class="step-num">3</span> Lead added to Instantly sequence with context tags</div>
         <div class="flow-step"><span class="step-num">4</span> Bidirectional sync: Instantly reply → HeyReach status update</div>
       </div>
-      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <button class="expand-toggle"><span class="arrow">▶</span> view pseudocode</button>
       <div class="code-expandable">
         <div class="code-block">
 <span class="cmt">// n8n workflow: HeyReach → Instantly bridge</span>
@@ -1194,4 +1194,16 @@ reply = <span class="fn">instantly.v2.onReply</span>(campaignId)
   <div class="foot-right"><a href="https://www.linkedin.com/in/ashish-saraf/" target="_blank">LinkedIn</a></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.expand-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      this.classList.toggle('open');
+      var code = this.nextElementSibling;
+      code.classList.toggle('open');
+    });
+  });
+});
+</script>
+</body>
+</html>
