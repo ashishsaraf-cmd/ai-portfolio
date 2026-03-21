@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Powered Partnerships — Ashish Saraf</title>
+<meta name="description" content="13 AI automations that run my partnerships workflow — built with Claude, HubSpot APIs, and MCP integrations.">
+<meta property="og:title" content="I built 13 AI automations that run my partnerships workflow">
+<meta property="og:description" content="Every manual CRM task, every outreach email, every partner profile — automated with Claude, HubSpot APIs, and MCP integrations.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ashishsaraf-cmd.github.io/ai-portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI-Powered Partnerships — Ashish Saraf">
+<meta name="twitter:description" content="13 AI skills automating CRM, partner intel, email drafting, and batch enrichment.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --bg3: #1a1a24;
+  --surface: #16161f;
+  --border: #2a2a3a;
+  --text: #e4e4ef;
+  --text-dim: #8888a0;
+  --accent: #5eead4;
+  --accent2: #818cf8;
+  --accent3: #f472b6;
+  --accent4: #fb923c;
+  --accent5: #a78bfa;
+  --green: #34d399;
+  --yellow: #fbbf24;
+  --red: #f87171;
+  --code-bg: #0d0d14;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Sora', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+::selection { background: var(--accent); color: var(--bg); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px clamp(24px, 6vw, 120px);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(94,234,212,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(129,140,248,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-label {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp .8s ease forwards;
+}
+.hero h1 {
+  font-size: clamp(36px, 5.5vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 900px;
+  opacity: 0;
+  animation: fadeUp .8s ease .15s forwards;
+}
+.hero h1 .gradient {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-dim);
+  max-width: 640px;
+  margin-top: 28px;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp .8s ease .3s forwards;
+}
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 56px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp .8s ease .45s forwards;
+}
+.stat-item .stat-num {
+  font-size: 42px;
+  font-weight: 700;
+  font-family: var(--mono);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-item .stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* ── STACK BAR ── */
+.stack-bar {
+  display: flex;
+  gap: 12px;
+  padding: 20px clamp(24px, 6vw, 120px);
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  flex-wrap: wrap;
+}
+.stack-tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  white-space: nowrap;
+  transition: all .2s;
+}
+.stack-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── SECTION ── */
+.section {
+  padding: 80px clamp(24px, 6vw, 120px);
+}
+.section-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 600;
+  margin-bottom: 48px;
+}
+
+/* ── ARCHITECTURE DIAGRAM ── */
+.arch-diagram {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 64px;
+  overflow-x: auto;
+}
+.arch-flow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 600px;
+}
+.arch-node {
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  min-width: 110px;
+  position: relative;
+}
+.arch-node.source { background: rgba(94,234,212,.12); border: 1px solid rgba(94,234,212,.3); color: var(--accent); }
+.arch-node.process { background: rgba(129,140,248,.12); border: 1px solid rgba(129,140,248,.3); color: var(--accent2); }
+.arch-node.output { background: rgba(244,114,182,.12); border: 1px solid rgba(244,114,182,.3); color: var(--accent3); }
+.arch-node.ai { background: rgba(251,146,60,.12); border: 1px solid rgba(251,146,60,.3); color: var(--accent4); }
+.arch-arrow {
+  color: var(--text-dim);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* ── SKILL CARDS ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 24px;
+}
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all .3s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.skill-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(94,234,212,.06);
+}
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+}
+.skill-card.c1::before { background: linear-gradient(90deg, var(--accent), transparent); }
+.skill-card.c2::before { background: linear-gradient(90deg, var(--accent2), transparent); }
+.skill-card.c3::before { background: linear-gradient(90deg, var(--accent3), transparent); }
+.skill-card.c4::before { background: linear-gradient(90deg, var(--accent4), transparent); }
+.skill-card.c5::before { background: linear-gradient(90deg, var(--accent5), transparent); }
+.skill-card.c6::before { background: linear-gradient(90deg, var(--green), transparent); }
+.skill-card.c7::before { background: linear-gradient(90deg, var(--yellow), transparent); }
+
+.skill-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.skill-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+.skill-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.badge-auto { background: rgba(94,234,212,.15); color: var(--accent); }
+.badge-batch { background: rgba(129,140,248,.15); color: var(--accent2); }
+.badge-intel { background: rgba(244,114,182,.15); color: var(--accent3); }
+.badge-email { background: rgba(251,146,60,.15); color: var(--accent4); }
+.badge-crm { background: rgba(167,139,250,.15); color: var(--accent5); }
+
+.skill-desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+  line-height: 1.65;
+}
+
+/* ── FLOW STEPS ── */
+.flow-steps {
+  margin-bottom: 20px;
+}
+.flow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.step-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.c1 .step-num { background: rgba(94,234,212,.15); color: var(--accent); }
+.c2 .step-num { background: rgba(129,140,248,.15); color: var(--accent2); }
+.c3 .step-num { background: rgba(244,114,182,.15); color: var(--accent3); }
+.c4 .step-num { background: rgba(251,146,60,.15); color: var(--accent4); }
+.c5 .step-num { background: rgba(167,139,250,.15); color: var(--accent5); }
+.c6 .step-num { background: rgba(52,211,153,.15); color: var(--green); }
+.c7 .step-num { background: rgba(251,191,36,.15); color: var(--yellow); }
+
+/* ── CODE BLOCK ── */
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  line-height: 1.7;
+  overflow-x: auto;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+.code-block .kw { color: var(--accent2); }
+.code-block .fn { color: var(--accent); }
+.code-block .str { color: var(--accent3); }
+.code-block .cmt { color: #555568; font-style: italic; }
+.code-block .op { color: var(--accent4); }
+.code-block .val { color: var(--yellow); }
+
+/* ── INTEGRATIONS STRIP ── */
+.integrations {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.int-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255,255,255,.04);
+  color: var(--text-dim);
+  letter-spacing: .5px;
+}
+
+/* ── METRICS SECTION ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+}
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+}
+.metric-card .metric-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.metric-card .metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: var(--mono);
+}
+.metric-card .metric-detail {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+.mv-teal { color: var(--accent); }
+.mv-purple { color: var(--accent2); }
+.mv-pink { color: var(--accent3); }
+.mv-orange { color: var(--accent4); }
+
+/* ── PHILOSOPHY ── */
+.philosophy {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.phil-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+}
+.phil-item h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.phil-item p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.phil-item .phil-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 40px clamp(24px, 6vw, 120px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+footer .foot-left {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-dim);
+}
+footer .foot-right {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ── EXPAND/COLLAPSE ── */
+.expand-toggle {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 6px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  border: none;
+  background: none;
+  transition: opacity .2s;
+}
+.expand-toggle:hover { opacity: .7; }
+.expand-toggle .arrow { transition: transform .2s; display: inline-block; }
+.expand-toggle.open .arrow { transform: rotate(90deg); }
+.code-expandable { display: none; }
+.code-expandable.open { display: block; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 32px; }
+  .arch-flow { justify-content: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═════════ HERO ═════════ -->
+<section class="hero">
+  <div class="hero-label">Ashish Saraf · AWS Alliance Lead @ Clazar</div>
+  <h1>I built <span class="gradient">13 AI automations</span> that run my partnerships workflow</h1>
+  <p class="hero-sub">Every manual CRM task, every outreach email, every partner profile — automated with Claude, HubSpot APIs, and MCP integrations. Here's the portfolio.</p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">13</div>
+      <div class="stat-label">Custom Skills</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Integrations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Manual Data Entry</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ STACK BAR ═════════ -->
+<div class="stack-bar">
+  <span class="stack-tag">Claude (Opus + Haiku)</span>
+  <span class="stack-tag">HubSpot CRM API</span>
+  <span class="stack-tag">Gmail MCP</span>
+  <span class="stack-tag">Slack MCP</span>
+  <span class="stack-tag">Notion MCP</span>
+  <span class="stack-tag">Fireflies MCP</span>
+  <span class="stack-tag">Google Apps Script</span>
+  <span class="stack-tag">n8n Workflows</span>
+  <span class="stack-tag">HeyReach</span>
+  <span class="stack-tag">Instantly.ai</span>
+  <span class="stack-tag">Chrome Automation</span>
+  <span class="stack-tag">Claude Code</span>
+</div>
+
+<!-- ═════════ ARCHITECTURE ═════════ -->
+<section class="section">
+  <div class="section-label">// System Architecture</div>
+  <div class="section-title">How It All Connects</div>
+  <div class="arch-diagram">
+    <div class="arch-flow">
+      <div class="arch-node source">HubSpot<br><small>CRM + Custom Objects</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node source">Fireflies<br><small>Call Transcripts</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node ai">Claude AI<br><small>Opus Orchestrator</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node ai">Haiku Agents<br><small>Batch Synthesis</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node output">Notion<br><small>Partner + Company DB</small></div>
+    </div>
+    <div style="height: 20px;"></div>
+    <div class="arch-flow">
+      <div class="arch-node source">Slack<br><small>Internal Signals</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node process">Web Search<br><small>News + Signals</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node ai">Claude AI<br><small>Synthesis Engine</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node output">Gmail<br><small>Draft Emails</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node output">HeyReach<br><small>LinkedIn Sequences</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ SKILLS ═════════ -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-label">// The Skills</div>
+  <div class="section-title">13 Automations, Simplified</div>
+  <div class="skills-grid">
+
+    <!-- ─── SKILL 1: Partner Intelligence ─── -->
+    <div class="skill-card c1">
+      <div class="skill-header">
+        <div class="skill-name">Partner Intelligence</div>
+        <span class="skill-badge badge-intel">Deep Dive</span>
+      </div>
+      <div class="skill-desc">Aggregates a full 360° profile on any AWS AM or partner contact — from 6 data sources into a structured Notion page. One command, complete context.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Search HubSpot contact by email → get contact ID</div>
+        <div class="flow-step"><span class="step-num">2</span> Parallel fetch: properties, companies, deals, notes, emails, Fireflies calls, Slack mentions, web signals</div>
+        <div class="flow-step"><span class="step-num">3</span> HubSpot API → Partner Contact object (2-40826561) → all mapped companies</div>
+        <div class="flow-step"><span class="step-num">4</span> Synthesize into 6-section intelligence profile</div>
+        <div class="flow-step"><span class="step-num">5</span> Write structured markdown to Notion Person DB</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Step 1: Resolve partner</span>
+contact = <span class="fn">hubspot.search</span>(<span class="str">"contacts"</span>, email)
+
+<span class="cmt">// Step 2: Parallel data fetch (all in one message)</span>
+<span class="kw">parallel</span> {
+  props    = <span class="fn">hubspot.get</span>(contact.id, [<span class="val">40+ properties</span>])
+  companies= <span class="fn">hubspot.assoc</span>(contact.id, <span class="str">"companies"</span>)
+  deals    = <span class="fn">hubspot.assoc</span>(contact.id, <span class="str">"deals"</span>)
+  notes    = <span class="fn">hubspot.search</span>(<span class="str">"notes"</span>, assoc: contact.id)
+  emails   = <span class="fn">hubspot.search</span>(<span class="str">"emails"</span>, assoc: contact.id)
+  calls    = <span class="fn">fireflies.search</span>(email)
+  slack    = <span class="fn">slack.search</span>(name, limit: <span class="val">10</span>)
+  web      = <span class="fn">webSearch</span>(<span class="str">"{name} {company} news 2025"</span>)
+  patch    = <span class="fn">hubspotAPI</span>(<span class="str">"/contacts/{id}/associations/2-40826561"</span>)
+}
+
+<span class="cmt">// Step 3: Find last partner reply</span>
+lastReply = emails.<span class="fn">filter</span>(dir == <span class="str">"INCOMING"</span>).<span class="fn">first</span>()
+
+<span class="cmt">// Step 4: Write to Notion</span>
+<span class="fn">notion.updatePage</span>(pageId, markdownProfile)
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">HubSpot</span>
+        <span class="int-tag">Fireflies</span>
+        <span class="int-tag">Slack</span>
+        <span class="int-tag">Notion</span>
+        <span class="int-tag">Web Search</span>
+        <span class="int-tag">HubSpot API (cURL)</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 2: Partner Intel Batch Enricher ─── -->
+    <div class="skill-card c2">
+      <div class="skill-header">
+        <div class="skill-name">Partner Batch Enricher</div>
+        <span class="skill-badge badge-batch">Orchestrator</span>
+      </div>
+      <div class="skill-desc">Scales partner intelligence to the entire database. Opus orchestrator pre-fetches all data, dispatches Haiku sub-agents in batches of 5 for synthesis. Resumable after interruption.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Query Notion Person DB → filter Type = "Partner"</div>
+        <div class="flow-step"><span class="step-num">2</span> Resolve all HubSpot contact IDs in parallel</div>
+        <div class="flow-step"><span class="step-num">3</span> Check progress.log → skip already-enriched partners</div>
+        <div class="flow-step"><span class="step-num">4</span> Pre-fetch ALL data for batch of 5 (1 batched HubSpot call + parallel Fireflies/Slack/Web)</div>
+        <div class="flow-step"><span class="step-num">5</span> Dispatch 5 Haiku sub-agents with raw data (zero MCP tools)</div>
+        <div class="flow-step"><span class="step-num">6</span> Orchestrator writes JSON output → Notion pages</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Architecture: Opus orchestrator + Haiku workers</span>
+partners = <span class="fn">notion.query</span>(<span class="str">"Person DB"</span>, type=<span class="str">"Partner"</span>)
+done     = <span class="fn">readLog</span>(<span class="str">"progress.log"</span>)
+queue    = partners.<span class="fn">filter</span>(p <span class="op">=></span> !done.includes(p))
+
+<span class="kw">for</span> batch <span class="kw">in</span> queue.<span class="fn">chunk</span>(<span class="val">5</span>) {
+  <span class="cmt">// Pre-fetch ALL data at orchestrator level</span>
+  data = <span class="kw">parallel</span> {
+    props  = <span class="fn">hubspot.batchGet</span>(batch.ids, [<span class="val">40+ props</span>])  <span class="cmt">// 1 call for 5</span>
+    deals  = batch.<span class="fn">map</span>(p <span class="op">=></span> <span class="fn">hubspot.assocDeals</span>(p.id))
+    notes  = batch.<span class="fn">map</span>(p <span class="op">=></span> <span class="fn">hubspot.assocNotes</span>(p.id))
+    calls  = batch.<span class="fn">map</span>(p <span class="op">=></span> <span class="fn">fireflies.search</span>(p.email))
+    slack  = batch.<span class="fn">map</span>(p <span class="op">=></span> <span class="fn">slack.search</span>(p.name))
+    web    = batch.<span class="fn">map</span>(p <span class="op">=></span> <span class="fn">webSearch</span>(p.name))
+  }
+
+  <span class="cmt">// Dispatch Haiku sub-agents (zero tools needed)</span>
+  results = batch.<span class="fn">map</span>(p <span class="op">=></span>
+    <span class="fn">haiku.synthesize</span>(data[p], template) <span class="cmt">// returns JSON</span>
+  )
+
+  <span class="cmt">// Orchestrator writes to Notion + logs progress</span>
+  results.<span class="fn">forEach</span>(r <span class="op">=></span> {
+    <span class="fn">notion.updatePage</span>(r.pageId, r.markdown)
+    <span class="fn">log</span>(<span class="str">"DONE|{email}|{meetings}|{deals}"</span>)
+  })
+}
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">Opus</span>
+        <span class="int-tag">Haiku (×5)</span>
+        <span class="int-tag">HubSpot</span>
+        <span class="int-tag">Fireflies</span>
+        <span class="int-tag">Slack</span>
+        <span class="int-tag">Notion</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 3: Company ICP Enricher ─── -->
+    <div class="skill-card c3">
+      <div class="skill-header">
+        <div class="skill-name">Company ICP Enricher</div>
+        <span class="skill-badge badge-intel">Deep Dive</span>
+      </div>
+      <div class="skill-desc">Builds a complete Ideal Customer Profile for any prospect company. Pulls firmographics, intent signals, call history, contacts, deals — writes a 6-section profile to Notion.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Find company in HubSpot + Notion (verify Type = "Prospect")</div>
+        <div class="flow-step"><span class="step-num">2</span> Parallel fetch: 40+ HubSpot props, deals, contacts, Fireflies, Slack, web research</div>
+        <div class="flow-step"><span class="step-num">3</span> Analyze: identify replied contacts, cross-ref Fireflies attendees, rank stakeholders by tier</div>
+        <div class="flow-step"><span class="step-num">4</span> Extract excitement signals + pain points from call transcripts</div>
+        <div class="flow-step"><span class="step-num">5</span> Write 6-section ICP to Notion Company DB</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Parallel data collection</span>
+<span class="kw">parallel</span> {
+  company  = <span class="fn">hubspot.get</span>(companyId, [<span class="val">40+ properties</span>])
+  deals    = <span class="fn">hubspot.assoc</span>(companyId, <span class="str">"deals"</span>)
+  contacts = <span class="fn">hubspot.assoc</span>(companyId, <span class="str">"contacts"</span>)
+  calls    = <span class="fn">fireflies.search</span>(companyName)
+  slack    = <span class="fn">slack.search</span>(companyName)
+  news     = <span class="fn">webSearch</span>(<span class="str">"{company} funding marketplace 2025"</span>)
+}
+
+<span class="cmt">// Analysis layer</span>
+replied = contacts.<span class="fn">filter</span>(c <span class="op">=></span> c.lastReply != <span class="kw">null</span>)
+stakeholders = contacts
+  .<span class="fn">filter</span>(fitScore <span class="op">in</span> [<span class="str">"High"</span>, <span class="str">"Mid"</span>])
+  .<span class="fn">rank</span>([callAttendee, cloudPartner, exec, ops, recency])
+  .<span class="fn">take</span>(<span class="val">10</span>)
+
+<span class="cmt">// Write structured profile to Notion</span>
+<span class="fn">notion.updatePage</span>(pageId, {
+  overview, cloudPartnership, intentSignals,
+  news, engagements, stakeholders
+})
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">HubSpot</span>
+        <span class="int-tag">Fireflies</span>
+        <span class="int-tag">Slack</span>
+        <span class="int-tag">Notion</span>
+        <span class="int-tag">Web Search</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 4: Company ICP Batch Enricher ─── -->
+    <div class="skill-card c4">
+      <div class="skill-header">
+        <div class="skill-name">Company Batch Enricher</div>
+        <span class="skill-badge badge-batch">Orchestrator</span>
+      </div>
+      <div class="skill-desc">Same Opus + Haiku architecture as Partner Batch. Enriches hundreds of prospect companies in batches of 5 with resume support and progress logging.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Query Notion Company DB → filter Type = "Prospect"</div>
+        <div class="flow-step"><span class="step-num">2</span> Cross-reference HubSpot IDs, check progress.log</div>
+        <div class="flow-step"><span class="step-num">3</span> Batch pre-fetch: 1 HubSpot call per 5 companies + parallel Fireflies/Slack/Web</div>
+        <div class="flow-step"><span class="step-num">4</span> Dispatch 5 Haiku agents → receive structured JSON</div>
+        <div class="flow-step"><span class="step-num">5</span> Orchestrator writes all Notion pages + logs</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Same pattern as partner batch — different data shape</span>
+prospects = <span class="fn">notion.query</span>(<span class="str">"Company DB"</span>, type=<span class="str">"Prospect"</span>)
+done = <span class="fn">readLog</span>(<span class="str">"progress.log"</span>)
+
+<span class="kw">for</span> batch <span class="kw">in</span> remaining.<span class="fn">chunk</span>(<span class="val">5</span>) {
+  data = <span class="fn">prefetchAll</span>(batch)  <span class="cmt">// HubSpot + Fireflies + Slack + Web</span>
+  json = <span class="fn">dispatchHaiku</span>(batch, data, <span class="str">"icp-template"</span>)
+  json.<span class="fn">forEach</span>(r <span class="op">=></span> <span class="fn">notion.write</span>(r) && <span class="fn">log</span>(r))
+}
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">Opus</span>
+        <span class="int-tag">Haiku (×5)</span>
+        <span class="int-tag">HubSpot</span>
+        <span class="int-tag">Fireflies</span>
+        <span class="int-tag">Slack</span>
+        <span class="int-tag">Notion</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 5: Co-Sell Email Drafter ─── -->
+    <div class="skill-card c5">
+      <div class="skill-header">
+        <div class="skill-name">AWS Co-Sell Email Drafter</div>
+        <span class="skill-badge badge-email">Email</span>
+      </div>
+      <div class="skill-desc">Turns HubSpot co-sell tasks into Gmail drafts. Reads Slack for pre-written messaging, groups deals by AM, checks for active threads, adds personalization, creates HTML drafts with signature.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Pull NOT_STARTED co-sell tasks from HubSpot (my tasks only)</div>
+        <div class="flow-step"><span class="step-num">2</span> Fetch associated deals → filter out Channel Partnership</div>
+        <div class="flow-step"><span class="step-num">3</span> Extract Slack URL from task body → read pre-written messaging</div>
+        <div class="flow-step"><span class="step-num">4</span> Group deals by AWS AM → combine multi-deal emails</div>
+        <div class="flow-step"><span class="step-num">5</span> Check last 7 days for active AM threads → recommend threading vs. fresh</div>
+        <div class="flow-step"><span class="step-num">6</span> Present drafts for review → create Gmail drafts with signature + CC</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Pull tasks and associated deals</span>
+tasks = <span class="fn">hubspot.search</span>(<span class="str">"tasks"</span>, {
+  subject: <span class="str">"Co-sell Initiation"</span>,
+  owner: myId, status: <span class="str">"NOT_STARTED"</span>
+})
+deals = <span class="fn">hubspot.assoc</span>(taskIds, <span class="str">"deals"</span>)
+  .<span class="fn">filter</span>(d <span class="op">=></span> d.channel <span class="op">!=</span> <span class="str">"Partnership"</span>)
+
+<span class="cmt">// Read Slack messaging per task</span>
+tasks.<span class="fn">forEach</span>(t <span class="op">=></span> {
+  slackUrl = <span class="fn">extractUrl</span>(t.body)
+  t.messaging = <span class="fn">slack.readThread</span>(slackUrl)
+})
+
+<span class="cmt">// Group by AM → combine multi-deal emails</span>
+grouped = deals.<span class="fn">groupBy</span>(d <span class="op">=></span> d.aws_am_email)
+
+<span class="cmt">// Check active conversations</span>
+grouped.<span class="fn">forEach</span>(am <span class="op">=></span> {
+  am.activeThread = <span class="fn">hubspot.recentEmails</span>(am.email, <span class="val">7</span>)
+})
+
+<span class="cmt">// Create Gmail drafts (after user approval)</span>
+signature = <span class="fn">gmail.fetchSignature</span>()
+grouped.<span class="fn">forEach</span>(am <span class="op">=></span> {
+  <span class="fn">gmail.createDraft</span>({
+    to: am.email,
+    cc: <span class="str">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81f1e0f3f5efe4f3f2e9e8f1f2c1e2ede0fbe0f3afe8ee">[email&#160;protected]</a>"</span> + am.psmEmail,
+    body: am.messaging + signature,
+    contentType: <span class="str">"text/html"</span>
+  })
+})
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">HubSpot</span>
+        <span class="int-tag">Slack</span>
+        <span class="int-tag">Gmail</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 6: Prospect → AM Bridge ─── -->
+    <div class="skill-card c6">
+      <div class="skill-header">
+        <div class="skill-name">Prospect → AM Bridge Intel</div>
+        <span class="skill-badge badge-intel">Intel</span>
+      </div>
+      <div class="skill-desc">When a prospect responds, this skill builds the entire context package for their mapped AWS AM: social proof, engagement history, and a ready-to-use reachout plan.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Extract prospect name + signal from their message</div>
+        <div class="flow-step"><span class="step-num">2</span> Find prospect + company in HubSpot → get aws_account_manager_email</div>
+        <div class="flow-step"><span class="step-num">3</span> Build social proof: find Clazar customers the prospect would recognize</div>
+        <div class="flow-step"><span class="step-num">4</span> Fetch AM's last engagement: notes, emails, meetings</div>
+        <div class="flow-step"><span class="step-num">5</span> Output: Signal + AM status + Social proof + Reachout plan + Draft message</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Find prospect → get mapped AM</span>
+prospect = <span class="fn">hubspot.search</span>(<span class="str">"contacts"</span>, prospectName)
+company  = <span class="fn">hubspot.search</span>(<span class="str">"companies"</span>, companyName)
+amEmail  = company.aws_account_manager_email
+
+<span class="cmt">// Build social proof from Clazar customers</span>
+customers = <span class="fn">hubspot.search</span>(<span class="str">"companies"</span>, {
+  lifecyclestage: <span class="str">"customer"</span>
+}).<span class="fn">filter</span>(c <span class="op">=></span> <span class="fn">sameEcosystem</span>(c, prospect))
+  .<span class="fn">take</span>(<span class="val">4</span>)
+
+<span class="cmt">// Fetch AM engagement history</span>
+am = <span class="fn">hubspot.search</span>(<span class="str">"contacts"</span>, amEmail)
+amNotes  = <span class="fn">hubspot.assoc</span>(am.id, <span class="str">"notes"</span>, limit: <span class="val">3</span>)
+amEmails = <span class="fn">hubspot.assoc</span>(am.id, <span class="str">"emails"</span>, limit: <span class="val">3</span>)
+status   = lastContact < <span class="val">30d</span> ? <span class="str">"🔥 Hot"</span> : <span class="str">"🔴 Cold"</span>
+
+<span class="cmt">// Generate reachout brief</span>
+<span class="fn">output</span>({ signal, amStatus, socialProof, plan, draftMsg })
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">HubSpot</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 7: Daily AWS Call Notes ─── -->
+    <div class="skill-card c7">
+      <div class="skill-header">
+        <div class="skill-name">Daily AWS Call Notes</div>
+        <span class="skill-badge badge-auto">Auto</span>
+      </div>
+      <div class="skill-desc">Pulls today's call transcripts from Fireflies, extracts company names, matches them to HubSpot records, and writes formatted call notes — verified by matching AM emails.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Fetch today's Fireflies transcripts</div>
+        <div class="flow-step"><span class="step-num">2</span> Extract company names from attendee emails + meeting title + transcript</div>
+        <div class="flow-step"><span class="step-num">3</span> Match to HubSpot → verify via Amazon attendee ↔ Brad AM email</div>
+        <div class="flow-step"><span class="step-num">4</span> Create formatted notes on each company's HubSpot record</div>
+        <div class="flow-step"><span class="step-num">5</span> Report: ✅ confirmed / ⚠️ unconfirmed / ❌ unmatched</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Pull today's calls</span>
+transcripts = <span class="fn">fireflies.getTranscripts</span>({
+  fromDate: <span class="fn">today</span>()
+})
+
+transcripts.<span class="fn">forEach</span>(t <span class="op">=></span> {
+  full = <span class="fn">fireflies.fetch</span>(t.id)
+  companies = <span class="fn">extractCompanies</span>(full)
+
+  companies.<span class="fn">forEach</span>(name <span class="op">=></span> {
+    match = <span class="fn">hubspot.search</span>(<span class="str">"companies"</span>, name)
+    <span class="cmt">// Verify: amazon attendee email == Brad AM email</span>
+    amazonEmails = full.attendees.<span class="fn">filter</span>(<span class="str">"@amazon"</span>)
+    verified = amazonEmails.<span class="fn">includes</span>(match.bradAmEmail)
+
+    <span class="fn">hubspot.createNote</span>(match.id, {
+      body: <span class="str">`📞 AWS Partner Call – ${date}\n${summary}`</span>
+    })
+  })
+})
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">Fireflies</span>
+        <span class="int-tag">HubSpot</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 8: Inbox Response Suggestions ─── -->
+    <div class="skill-card c1">
+      <div class="skill-header">
+        <div class="skill-name">Inbox Response Suggestions</div>
+        <span class="skill-badge badge-email">Email</span>
+      </div>
+      <div class="skill-desc">Scans Gmail for unread emails from real people, reads full thread context, and creates in-thread draft replies via Chrome automation. Deduplicates against existing drafts. Never sends.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Search Gmail: is:unread -from:me (last 48h)</div>
+        <div class="flow-step"><span class="step-num">2</span> Check existing drafts → build skip list (no duplicates)</div>
+        <div class="flow-step"><span class="step-num">3</span> Filter: humans only (skip newsletters, no-reply, already-replied)</div>
+        <div class="flow-step"><span class="step-num">4</span> Read full thread → draft context-aware reply</div>
+        <div class="flow-step"><span class="step-num">5</span> Chrome automation: navigate to thread → Reply All → type draft → Ctrl+S</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Scan + deduplicate</span>
+unread = <span class="fn">gmail.search</span>(<span class="str">"is:unread -from:me"</span>, limit: <span class="val">20</span>)
+drafts = <span class="fn">gmail.listDrafts</span>()
+skipList = drafts.<span class="fn">map</span>(d <span class="op">=></span> d.recipient + d.subject)
+
+<span class="cmt">// Filter for real humans</span>
+needsReply = unread.<span class="fn">filter</span>(isHuman && !alreadyReplied && !inSkipList)
+
+needsReply.<span class="fn">forEach</span>(msg <span class="op">=></span> {
+  thread = <span class="fn">gmail.readThread</span>(msg.threadId)
+  reply  = <span class="fn">claude.draft</span>(thread)  <span class="cmt">// tone-matched, 3-6 sentences</span>
+
+  <span class="cmt">// Chrome: create in-thread draft (not via API)</span>
+  <span class="fn">chrome.navigate</span>(<span class="str">`mail.google.com/#inbox/${threadId}`</span>)
+  <span class="fn">chrome.click</span>(<span class="str">"Reply All"</span>)
+  <span class="fn">chrome.type</span>(reply)
+  <span class="fn">chrome.key</span>(<span class="str">"Ctrl+S"</span>)  <span class="cmt">// save as draft, never send</span>
+})
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">Gmail</span>
+        <span class="int-tag">Chrome</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 9: CSV → HubSpot Uploader ─── -->
+    <div class="skill-card c2">
+      <div class="skill-header">
+        <div class="skill-name">CSV → HubSpot Uploader</div>
+        <span class="skill-badge badge-crm">CRM</span>
+      </div>
+      <div class="skill-desc">Drop a CSV, it auto-maps columns to HubSpot properties, deduplicates by domain, and batch-uploads 10 records at a time. Handles hundreds of rows.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Read CSV → detect Companies vs. Contacts</div>
+        <div class="flow-step"><span class="step-num">2</span> Auto-map columns → HubSpot properties (case-insensitive)</div>
+        <div class="flow-step"><span class="step-num">3</span> Deduplicate by domain (companies) or email (contacts)</div>
+        <div class="flow-step"><span class="step-num">4</span> Batch upload: 10 records per API call</div>
+        <div class="flow-step"><span class="step-num">5</span> Report: X created, Y skipped, Z failed</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Read + classify</span>
+csv = <span class="fn">parseCSV</span>(file)
+type = csv.columns.<span class="fn">match</span>(<span class="str">"domain"</span>) ? <span class="str">"companies"</span> : <span class="str">"contacts"</span>
+
+<span class="cmt">// Map columns (flexible matching)</span>
+mapping = csv.columns.<span class="fn">map</span>(col <span class="op">=></span>
+  <span class="fn">hubspot.searchProperties</span>(col)  <span class="cmt">// "Website/Domain" → "domain"</span>
+)
+
+<span class="cmt">// Batch upload (10 per request)</span>
+<span class="kw">for</span> batch <span class="kw">in</span> csv.rows.<span class="fn">chunk</span>(<span class="val">10</span>) {
+  <span class="fn">hubspot.batchCreate</span>(type, batch, mapping)
+}
+
+<span class="fn">report</span>({ created, skipped, failed })
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">HubSpot</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 10: Partner Contact Lookup ─── -->
+    <div class="skill-card c3">
+      <div class="skill-header">
+        <div class="skill-name">Partner Contact Lookup</div>
+        <span class="skill-badge badge-crm">CRM</span>
+      </div>
+      <div class="skill-desc">Traverses HubSpot's custom Partner Contact object (2-40826561) to find all companies mapped to a specific AM. Uses direct API calls through Chrome.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Search HubSpot → get Contact ID</div>
+        <div class="flow-step"><span class="step-num">2</span> API call: Contact → Partner Contact object associations</div>
+        <div class="flow-step"><span class="step-num">3</span> API call: Partner Contact → Company associations (deduplicate)</div>
+        <div class="flow-step"><span class="step-num">4</span> Batch fetch company details</div>
+        <div class="flow-step"><span class="step-num">5</span> Present: N companies with name, domain, industry, location</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Traverse: Contact → Custom Object → Companies</span>
+contactId = <span class="fn">hubspot.search</span>(<span class="str">"contacts"</span>, email).id
+
+<span class="cmt">// Direct HubSpot API via browser</span>
+pcIds = <span class="fn">fetch</span>(<span class="str">`/contacts/${contactId}/associations/2-40826561`</span>)
+  .results.<span class="fn">map</span>(r <span class="op">=></span> r.id)
+
+companyIds = pcIds.<span class="fn">flatMap</span>(pcId <span class="op">=></span>
+  <span class="fn">fetch</span>(<span class="str">`/2-40826561/${pcId}/associations/companies`</span>)
+    .results.<span class="fn">map</span>(r <span class="op">=></span> r.id)
+)
+companyIds = [...<span class="kw">new</span> <span class="fn">Set</span>(companyIds)]  <span class="cmt">// deduplicate</span>
+
+companies = <span class="fn">hubspot.batchRead</span>(companyIds,
+  [<span class="str">"name"</span>, <span class="str">"domain"</span>, <span class="str">"industry"</span>, <span class="str">"city"</span>])
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">HubSpot API</span>
+        <span class="int-tag">Chrome</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 11: AWS AM Outreach ─── -->
+    <div class="skill-card c4">
+      <div class="skill-header">
+        <div class="skill-name">AWS AM Outreach</div>
+        <span class="skill-badge badge-email">Email</span>
+      </div>
+      <div class="skill-desc">End-to-end hyper-personalized outreach for AWS Account Managers. Pulls AMs from HubSpot, matches PSMs by territory, scores engagement, generates Gmail drafts with personalization angles.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Pull AWS AMs from HubSpot (Amazon + Account Manager)</div>
+        <div class="flow-step"><span class="step-num">2</span> Fetch engagement signals → classify 🔥 Hot / 🟡 Warm / 🔴 Cold</div>
+        <div class="flow-step"><span class="step-num">3</span> Match PSMs by territory/segment (Startups → Startups PSM, ANZ → ANZ PSM)</div>
+        <div class="flow-step"><span class="step-num">4</span> Prioritize: next activity > PSM engaged > AM replied > nurture > cold</div>
+        <div class="flow-step"><span class="step-num">5</span> Draft personalized emails using 6 angle types → create Gmail drafts</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// Pull AMs + PSMs</span>
+ams = <span class="fn">hubspot.search</span>(<span class="str">"contacts"</span>, {
+  company: <span class="str">"Amazon"</span>, jobtitle: <span class="str">"Account Manager"</span>
+})
+psms = <span class="fn">hubspot.search</span>(<span class="str">"contacts"</span>, {
+  company: <span class="str">"Amazon"</span>, jobtitle: <span class="str">"Partner"</span>
+})
+
+<span class="cmt">// Match + Score</span>
+ams.<span class="fn">forEach</span>(am <span class="op">=></span> {
+  am.psm = <span class="fn">matchPSM</span>(am, psms)  <span class="cmt">// by territory/segment</span>
+  am.tier = am.replied < <span class="val">14d</span> ? <span class="str">"🔥"</span> :
+            am.lastContact < <span class="val">30d</span> ? <span class="str">"🟡"</span> : <span class="str">"🔴"</span>
+})
+
+<span class="cmt">// Personalization framework</span>
+angles = [<span class="str">"PSM warm ref"</span>, <span class="str">"prior meeting"</span>, <span class="str">"peer AM"</span>,
+          <span class="str">"regional hook"</span>, <span class="str">"segment hook"</span>, <span class="str">"propensity score"</span>]
+
+ams.<span class="fn">sorted</span>().<span class="fn">forEach</span>(am <span class="op">=></span>
+  <span class="fn">gmail.createDraft</span>(<span class="fn">personalize</span>(am, angles))
+)
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">HubSpot</span>
+        <span class="int-tag">Gmail</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 12: Today's Tasks ─── -->
+    <div class="skill-card c5">
+      <div class="skill-header">
+        <div class="skill-name">Today's Tasks</div>
+        <span class="skill-badge badge-auto">Auto</span>
+      </div>
+      <div class="skill-desc">Quick-check: pulls today's tasks from Notion, sorted by due date. Simple, daily driver.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> Navigate to Notion task database</div>
+        <div class="flow-step"><span class="step-num">2</span> Sort by due date → filter for today</div>
+        <div class="flow-step"><span class="step-num">3</span> Report tasks + suggest automation opportunities</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+tasks = <span class="fn">notion.queryDB</span>(taskDbId, {
+  sort: <span class="str">"due_date"</span>,
+  filter: { dueDate: <span class="fn">today</span>() }
+})
+
+<span class="fn">report</span>(tasks.count, tasks.list)
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">Notion</span>
+      </div>
+    </div>
+
+    <!-- ─── SKILL 13: n8n + Instantly Bridge ─── -->
+    <div class="skill-card c6">
+      <div class="skill-header">
+        <div class="skill-name">n8n + Instantly Bridge</div>
+        <span class="skill-badge badge-auto">Infra</span>
+      </div>
+      <div class="skill-desc">8 importable n8n workflow templates bridging HeyReach LinkedIn sequences with Instantly.ai email campaigns via V2 API. Middleware layer for multi-channel outreach.</div>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="step-num">1</span> HeyReach LinkedIn engagement triggers n8n webhook</div>
+        <div class="flow-step"><span class="step-num">2</span> n8n formats payload → calls Instantly V2 API</div>
+        <div class="flow-step"><span class="step-num">3</span> Lead added to Instantly sequence with context tags</div>
+        <div class="flow-step"><span class="step-num">4</span> Bidirectional sync: Instantly reply → HeyReach status update</div>
+      </div>
+      <button class="expand-toggle" onclick="toggle(this)"><span class="arrow">▶</span> view pseudocode</button>
+      <div class="code-expandable">
+        <div class="code-block">
+<span class="cmt">// n8n workflow: HeyReach → Instantly bridge</span>
+trigger = <span class="fn">n8n.webhook</span>(<span class="str">"heyreach-engagement"</span>)
+
+lead = {
+  email: trigger.body.email,
+  tags:  [trigger.body.campaign, trigger.body.action],
+  vars:  { linkedin_msg: trigger.body.lastMessage }
+}
+
+<span class="fn">instantly.v2.addLead</span>(campaignId, lead)
+
+<span class="cmt">// Reverse sync: reply detection</span>
+reply = <span class="fn">instantly.v2.onReply</span>(campaignId)
+<span class="fn">heyreach.updateStatus</span>(reply.email, <span class="str">"replied"</span>)
+        </div>
+      </div>
+      <div class="integrations">
+        <span class="int-tag">n8n</span>
+        <span class="int-tag">HeyReach</span>
+        <span class="int-tag">Instantly.ai</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═════════ DESIGN PATTERNS ═════════ -->
+<section class="section philosophy">
+  <div class="section-label">// Design Patterns</div>
+  <div class="section-title">What Makes This Work</div>
+  <div class="phil-grid">
+    <div class="phil-item">
+      <div class="phil-icon">⚡</div>
+      <h3>Parallel Execution</h3>
+      <p>Every skill launches independent data fetches in the same message. HubSpot, Fireflies, Slack, and web search run simultaneously — not sequentially.</p>
+    </div>
+    <div class="phil-item">
+      <div class="phil-icon">🧠</div>
+      <h3>Opus + Haiku Architecture</h3>
+      <p>Opus orchestrates and handles tool calls. Haiku sub-agents do text synthesis only (zero MCP tools). Result: 100% reliability, 70% cost reduction.</p>
+    </div>
+    <div class="phil-item">
+      <div class="phil-icon">🔄</div>
+      <h3>Resumable Batch Processing</h3>
+      <p>Progress logs track every completed record. When context windows fill up, just say "continue" — the system picks up exactly where it left off.</p>
+    </div>
+    <div class="phil-item">
+      <div class="phil-icon">🔗</div>
+      <h3>Custom Object Traversal</h3>
+      <p>HubSpot's Partner Contact custom object (2-40826561) maps AMs to companies. Direct API calls traverse this relationship that the standard tools can't.</p>
+    </div>
+    <div class="phil-item">
+      <div class="phil-icon">🛡️</div>
+      <h3>Never Fabricate, Never Block</h3>
+      <p>Every skill follows the same rule: if data is missing, write "—" and keep going. No hallucination, no halting. Partial intel beats no intel.</p>
+    </div>
+    <div class="phil-item">
+      <div class="phil-icon">📧</div>
+      <h3>Human-in-the-Loop Drafts</h3>
+      <p>Email skills never send. They create drafts, show previews, and wait for approval. Automation handles the research; humans handle the send button.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ IMPACT METRICS ═════════ -->
+<section class="section">
+  <div class="section-label">// Impact</div>
+  <div class="section-title">What This Replaces</div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">Partner Profile Build Time</div>
+      <div class="metric-value mv-teal">~2min</div>
+      <div class="metric-detail">Previously 45+ min of manual CRM/call/Slack research</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Batch Enrichment</div>
+      <div class="metric-value mv-purple">5 at once</div>
+      <div class="metric-detail">Parallel Haiku sub-agents with zero tool failures</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Co-Sell Email Workflow</div>
+      <div class="metric-value mv-pink">Task → Draft</div>
+      <div class="metric-detail">HubSpot task + Slack msg → Gmail draft, fully assembled</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Daily Call Notes</div>
+      <div class="metric-value mv-orange">Automated</div>
+      <div class="metric-detail">Fireflies → HubSpot notes with AM email verification</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ FOOTER ═════════ -->
+<footer>
+  <div class="foot-left">Built with Claude · Ashish Saraf · 2025–2026</div>
+  <div class="foot-right"><a href="https://www.linkedin.com/in/ashish-saraf/" target="_blank">LinkedIn</a></div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-
