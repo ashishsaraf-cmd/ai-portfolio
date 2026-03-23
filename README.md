@@ -1,23 +1,26 @@
-# AI Automation Portfolio
+# AI-Powered Partnerships Portfolio
 
-My partnerships workflow — 13 custom AI skills built with Claude, HubSpot APIs, and MCP integrations.
+I replaced 40 hours of manual work with 13 AI automations — built with Claude Code, HubSpot APIs, and 8+ MCP integrations.
 
-**Live site:** [https://ashishsaraf.github.io/ai-portfolio](https://ashishsaraf.github.io/ai-portfolio)
+**Live site:** [https://ashishsaraf-cmd.github.io/ai-portfolio](https://ashishsaraf-cmd.github.io/ai-portfolio)
 
 ## What's inside
 
-- 13 automation skills covering CRM ops, partner intelligence, email drafting, and batch enrichment
-- Simplified pseudocode showing the logic behind each workflow
-- Architecture diagram showing how all systems connect
+- **13 automation skills** across 4 categories: Intelligence, Email, CRM Operations, and Infrastructure
+- **Before/After comparisons** showing the manual pain each skill replaces
+- **Pseudocode** showing the logic behind each workflow
+- **Compound workflows** showing how skills chain together
+- **8 engineering patterns** — parallel execution, resumable processing, dual token architecture, and more
+- **Architecture diagram** showing data flow from 6 sources through Claude Code to 5 output systems
 
 ## Stack
 
-Claude (Opus + Haiku) · HubSpot CRM API · Gmail · Slack · Notion · Fireflies · n8n · HeyReach · Instantly.ai · Chrome Automation
+Claude Code (Opus) · HubSpot CRM API · HubSpot Custom Objects · Gmail MCP · Slack MCP · Notion MCP · Fireflies MCP · Clay MCP · HeyReach MCP · Apify (LinkedIn) · macOS LaunchAgent · Node.js · Python 3
 
 ## Deploy
 
-This is a single-file static site. Enable GitHub Pages in repo settings → deploy from `main` branch.
+Single-file static site. Enable GitHub Pages in repo settings → deploy from `main` branch.
 
 ---
 
-Built by [Ashish Saraf](https://www.linkedin.com/in/ashish-saraf/) · AWS Alliance Lead @ Clazar
+Built by [Ashish Saraf](https://www.linkedin.com/in/ashish-saraf08/) · AWS Alliance Lead @ Clazar
